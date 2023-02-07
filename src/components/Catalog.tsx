@@ -38,7 +38,7 @@ const Catalog = () => {
 			</div>
 			<div
 				className={
-					!isGrid ? style.catalog__items_grid : style.catalog__items_list
+					isGrid ? style.catalog__items_grid : style.catalog__items_list
 				}
 			>
 				{catalog.map(item => (
