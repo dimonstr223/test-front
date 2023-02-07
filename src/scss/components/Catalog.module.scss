@@ -1,0 +1,25 @@
+.catalog {
+	max-height: 60vh;
+	overflow-y: scroll;
+
+	.catalog__top {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+
+		button {
+			height: 100%;
+		}
+	}
+
+	.catalog__items_grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-gap: 10px;
+	}
+	.catalog__items_list {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+}

@@ -1,0 +1,15 @@
+.basketItem {
+	padding: 10px;
+	display: grid;
+	grid-template-columns: 3fr 2fr repeat(2, 1fr) 0.5fr;
+	grid-template-rows: 1fr;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type='number'] {
+	-moz-appearance: textfield;
+}
