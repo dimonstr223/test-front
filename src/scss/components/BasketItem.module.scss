@@ -1,8 +1,14 @@
+@import '../vars.scss';
+
 .basketItem {
 	padding: 10px;
 	display: grid;
 	grid-template-columns: 3fr 2fr repeat(2, 1fr) 0.5fr;
 	grid-template-rows: 1fr;
+
+	.remove {
+		@extend %button;
+	}
 }
 
 input::-webkit-outer-spin-button,

@@ -27,11 +27,11 @@ const Catalog = () => {
 				<h1 className={style.title}>Каталог</h1>
 				{isGrid ? (
 					<button className={style.catalog__surface} onClick={onSurfaceClick}>
-						Плитка
+						Список
 					</button>
 				) : (
 					<button className={style.catalog__surface} onClick={onSurfaceClick}>
-						Список
+						Плитка
 					</button>
 				)}
 				<Filter />

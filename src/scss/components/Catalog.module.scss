@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 .catalog {
 	max-height: 60vh;
 	overflow-y: scroll;
@@ -5,10 +7,10 @@
 	.catalog__top {
 		display: flex;
 		align-items: center;
-		gap: 20px;
+		gap: 50px;
 
 		button {
-			height: 100%;
+			@extend %button;
 		}
 	}
 

@@ -44,7 +44,7 @@ const CatalogItem: FC<ICatalogItemProps> = ({ item }) => {
 				</div>
 			)}
 			{item.SKU ? (
-				<button className={style.buyButton} onClick={onShowMore}>
+				<button className={style.showMoreButton} onClick={onShowMore}>
 					Показать больше
 				</button>
 			) : (

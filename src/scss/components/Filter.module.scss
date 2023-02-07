@@ -1,0 +1,11 @@
+@import '../vars.scss';
+
+.filterArea {
+	select {
+		@extend %button;
+		width: 100px;
+		option {
+			color: #000;
+		}
+	}
+}
