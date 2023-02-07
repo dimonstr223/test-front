@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import useAppDispatch from '../hooks/useAppDispatch'
 
 import { setBasketItem } from '../redux/basket/basketSlice'
@@ -12,14 +12,21 @@ interface ICatalogItemProps {
 }
 const CatalogItem: FC<ICatalogItemProps> = ({ item }) => {
 	const dispatch = useAppDispatch()
-	const [isOpen, setIsOpen] = useState(false)
-
-	const onShowMore = () => {
-		setIsOpen(!isOpen)
-	}
+	const optionRef = useRef<HTMLSelectElement>(null)
 
 	const onBuyClick = () => {
-		dispatch(setBasketItem(item))
+		if (item.SKU) {
+			dispatch(
+				setBasketItem(
+					//@ts-ignore
+					Object.values(item.SKU).find(
+						(item: any) => item.ID === optionRef.current?.value
+					)
+				)
+			)
+		} else {
+			dispatch(setBasketItem(item))
+		}
 	}
 	return (
 		<div className={style.catalogItem}>
@@ -44,27 +51,19 @@ const CatalogItem: FC<ICatalogItemProps> = ({ item }) => {
 				</div>
 			)}
 			{item.SKU ? (
-				<button className={style.showMoreButton} onClick={onShowMore}>
-					Показать больше
-				</button>
-			) : (
-				<>
-					<div className={style.price}>{item.PRICE} руб.</div>
-					<button className={style.buyButton} onClick={onBuyClick}>
-						Добавить
-					</button>
-				</>
-			)}
-			{item.SKU && isOpen && (
-				<div className={style.skuItems}>
+				<select ref={optionRef} className={style.skuItems}>
 					{Object.values(item.SKU).map((item: any) => (
-						<div className={style.skuItem}>
-							<h4>{item.NAME}</h4>
-							<div>{item.PRICE} руб.</div>
-						</div>
+						<option key={item.ID} value={item.ID}>
+							{item.NAME}
+						</option>
 					))}
-				</div>
+				</select>
+			) : (
+				<div className={style.price}>{item.PRICE} руб.</div>
 			)}
+			<button className={style.buyButton} onClick={onBuyClick}>
+				Добавить
+			</button>
 		</div>
 	)
 }

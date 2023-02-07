@@ -1,7 +1,6 @@
 @import '../vars.scss';
 
 .catalogItem {
-	position: relative;
 	padding: 10px;
 	border-radius: 10px;
 	background-color: #fff;
@@ -17,13 +16,13 @@
 	}
 
 	.skuItems {
+		@extend %button;
+		height: auto;
+		display: block;
 		background-color: #e1f4ff;
-
-		padding: 10px;
-		z-index: 1;
-		width: 100%;
-		left: 0;
-		position: absolute;
+		padding: 5px;
+		margin-bottom: 10px;
+		width: 200px;
 		.skuItem {
 			padding: 5px;
 		}
